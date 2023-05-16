@@ -1,5 +1,7 @@
 import { set, sub } from "date-fns";
 import { noCase } from "change-case";
+import Image from "next/image";
+
 import { faker } from "@faker-js/faker";
 import { useState, useRef } from "react";
 // @mui
@@ -29,7 +31,7 @@ import MenuPopover from "./MenuPopover";
 
 const NOTIFICATIONS = [
   {
-    id: faker.datatype.uuid(),
+    id: faker.string.uuid(),
     title: "Your order is placed",
     description: "waiting for shipping",
     avatar: null,
@@ -38,7 +40,7 @@ const NOTIFICATIONS = [
     isUnRead: true,
   },
   {
-    id: faker.datatype.uuid(),
+    id: faker.string.uuid(),
     title: faker.person.fullName(),
     description: "answered to your comment on the Minimal",
     avatar: "/static/mock-images/avatars/avatar_2.jpg",
@@ -47,7 +49,7 @@ const NOTIFICATIONS = [
     isUnRead: true,
   },
   {
-    id: faker.datatype.uuid(),
+    id: faker.string.uuid(),
     title: "You have new message",
     description: "5 unread messages",
     avatar: null,
@@ -56,7 +58,7 @@ const NOTIFICATIONS = [
     isUnRead: false,
   },
   {
-    id: faker.datatype.uuid(),
+    id: faker.string.uuid(),
     title: "You have new mail",
     description: "sent from Guido Padberg",
     avatar: null,
@@ -65,7 +67,7 @@ const NOTIFICATIONS = [
     isUnRead: false,
   },
   {
-    id: faker.datatype.uuid(),
+    id: faker.string.uuid(),
     title: "Delivery processing",
     description: "Your order is being shipped",
     avatar: null,
@@ -235,30 +237,30 @@ function renderContent(notification: NotificationProps) {
 
   if (notification.type === "order_placed") {
     return {
-      avatar: <img alt={notification.title} src="/static/icons/ic_notification_package.svg" />,
+      avatar: <Image alt={notification.title} src="/static/icons/ic_notification_package.svg" fill={true} />,
       title,
     };
   }
   if (notification.type === "order_shipped") {
     return {
-      avatar: <img alt={notification.title} src="/static/icons/ic_notification_shipping.svg" />,
+      avatar: <Image alt={notification.title} src="/static/icons/ic_notification_shipping.svg" fill={true} />,
       title,
     };
   }
   if (notification.type === "mail") {
     return {
-      avatar: <img alt={notification.title} src="/static/icons/ic_notification_mail.svg" />,
+      avatar: <Image alt={notification.title} src="/static/icons/ic_notification_mail.svg" fill={true} />,
       title,
     };
   }
   if (notification.type === "chat_message") {
     return {
-      avatar: <img alt={notification.title} src="/static/icons/ic_notification_chat.svg" />,
+      avatar: <Image alt={notification.title} src="/static/icons/ic_notification_chat.svg" fill={true} />,
       title,
     };
   }
   return {
-    avatar: notification.avatar ? <img alt={notification.title} src={notification.avatar} /> : null,
+    avatar: notification.avatar ? <Image alt={notification.title} src={notification.avatar} fill={true} /> : null,
     title,
   };
 }

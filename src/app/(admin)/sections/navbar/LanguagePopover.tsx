@@ -1,26 +1,28 @@
-import { useRef, useState } from 'react';
+import { useRef, useState } from "react";
+import Image from "next/image";
+
 // material
-import { alpha } from '@mui/material/styles';
-import { Box, MenuItem, Stack, IconButton } from '@mui/material';
-import MenuPopover from './MenuPopover';
+import { alpha } from "@mui/material/styles";
+import { Box, MenuItem, Stack, IconButton } from "@mui/material";
+import MenuPopover from "./MenuPopover";
 
 // ----------------------------------------------------------------------
 
 const LANGS = [
   {
-    value: 'en',
-    label: 'English',
-    icon: '/static/icons/ic_flag_en.svg',
+    value: "en",
+    label: "English",
+    icon: "/static/icons/ic_flag_en.svg",
   },
   {
-    value: 'de',
-    label: 'German',
-    icon: '/static/icons/ic_flag_de.svg',
+    value: "de",
+    label: "German",
+    icon: "/static/icons/ic_flag_de.svg",
   },
   {
-    value: 'fr',
-    label: 'French',
-    icon: '/static/icons/ic_flag_fr.svg',
+    value: "fr",
+    label: "French",
+    icon: "/static/icons/ic_flag_fr.svg",
   },
 ];
 
@@ -52,7 +54,7 @@ export default function LanguagePopover() {
           }),
         }}
       >
-        <img src={LANGS[0].icon} alt={LANGS[0].label} />
+        <Image src={LANGS[0].icon} alt={LANGS[0].label} fill={true} />
       </IconButton>
 
       <MenuPopover
@@ -63,7 +65,7 @@ export default function LanguagePopover() {
           mt: 1.5,
           ml: 0.75,
           width: 180,
-          '& .MuiMenuItem-root': { px: 1, typography: 'body2', borderRadius: 0.75 },
+          "& .MuiMenuItem-root": { px: 1, typography: "body2", borderRadius: 0.75 },
         }}
       >
         <Stack spacing={0.75}>

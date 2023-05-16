@@ -5,8 +5,8 @@ import { useRouter } from "next/navigation";
 // material
 import { styled } from "@mui/material/styles";
 //
-import DashboardNavbar from "./DashboardNavbar";
-import DashboardSidebar from "./DashboardSidebar";
+import DashboardNavbar from "./sections/navbar";
+import DashboardSidebar from "./sections/sidebar";
 import { AppLoader } from "@/components/loader";
 import { useGetAuthProfileQuery } from "@/redux/features/profile/api";
 

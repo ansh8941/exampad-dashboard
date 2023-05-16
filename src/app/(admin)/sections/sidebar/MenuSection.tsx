@@ -6,7 +6,7 @@ import { usePathname } from "next/navigation";
 import { alpha, useTheme, styled } from "@mui/material/styles";
 import { Box, List, Collapse, ListItemText, ListItemIcon, ListItemButton } from "@mui/material";
 //
-import Iconify from "./Iconify";
+import Iconify from "@/components/Iconify";
 
 // ----------------------------------------------------------------------
 interface CHILDRENTYPES {
@@ -21,7 +21,7 @@ interface Itemtypes {
   info?: string;
   children?: CHILDRENTYPES[];
 }
-interface NavItemProps {
+interface MenuItemProps {
   item: Itemtypes;
   active: any;
 }
@@ -58,7 +58,7 @@ const ListItemIconStyle = styled(ListItemIcon)({
   height: "24px",
 });
 
-function NavItem({ item, active }: NavItemProps) {
+function MenuItem({ item, active }: MenuItemProps) {
   const theme = useTheme();
 
   const isActiveRoot = active(item.path, 1);
@@ -162,11 +162,11 @@ function NavItem({ item, active }: NavItemProps) {
   );
 }
 
-interface NavSectionProps {
-  navConfig: Itemtypes[];
+interface MenuSectionProps {
+  menuConfig: Itemtypes[];
 }
 
-export default function NavSection({ navConfig, ...other }: NavSectionProps) {
+export default function MenuSection({ menuConfig, ...other }: MenuSectionProps) {
   const pathname = usePathname();
 
   const match = (path: string, node?: number) => {
@@ -182,8 +182,8 @@ export default function NavSection({ navConfig, ...other }: NavSectionProps) {
   return (
     <Box {...other}>
       <List disablePadding sx={{ px: 2 }}>
-        {navConfig.map((item) => (
-          <NavItem key={item.title} item={item} active={match} />
+        {menuConfig.map((item) => (
+          <MenuItem key={item.title} item={item} active={match} />
         ))}
       </List>
     </Box>

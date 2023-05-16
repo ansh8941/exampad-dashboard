@@ -12,11 +12,11 @@ import useResponsive from "@/hooks/useResponsive";
 // components
 import Logo from "@/components/Logo";
 import Scrollbar from "@/components/Scrollbar";
-import NavSection from "@/components/NavSection";
+import MenuSection from "./MenuSection";
 import { useAppSelector, useAppDispatch } from "@/redux/hooks";
 
 //
-import navConfig from "./NavConfig";
+import menuConfig from "./MenuConfig";
 
 // ----------------------------------------------------------------------
 
@@ -84,7 +84,7 @@ export default function DashboardSidebar({ isOpenSidebar, onCloseSidebar }: Dash
         </Link>
       </Box>
 
-      <NavSection navConfig={navConfig} />
+      <MenuSection menuConfig={menuConfig} />
     </Scrollbar>
   );
 
